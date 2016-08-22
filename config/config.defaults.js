@@ -2,6 +2,8 @@
  * Created by alex on 8/22/16.
  */
 (function(){
+    //Rule: Use UPPERCASE for Constants
+    
     var config = module.exports = {};
     //console.log('-----reading the config.defaults.js under config!');
 

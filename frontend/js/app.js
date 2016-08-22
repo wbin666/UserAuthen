@@ -66,26 +66,48 @@
 
     checkLoggedin.$inject = ['$q', 'userService', '$location', '$rootScope', 'Flash'];
     function checkLoggedin($q, userService, $location, $rootScope, Flash) {
-        var deferred = $q.defer();
+        // var deferred = $q.defer();
+        //
+        // userService.loggedinCheck()
+        //     .then(loggedinCheckSuccessCb);
+        //
+        // return deferred.promise;
+        //
+        // function loggedinCheckSuccessCb(response) {
+        //     //$rootScope.errorMessage = null;
+        //     //User is Authenticated
+        //     if (response.data !== '0') {
+        //         $rootScope.currentUser = response.data;
+        //         deferred.resolve();
+        //     } else { //User is not Authenticated
+        //         //$rootScope.errorMessage = 'You need to log in.';
+        //         Flash.create("danger", 'You need to log in.');
+        //         deferred.reject();
+        //         $location.url('/login');
+        //     }
+        // }
 
-        userService.loggedinCheck()
-            .then(loggedinCheckSuccessCb);
 
-        return deferred.promise;
+        var newPromise = $q(function newPromiseCb4CheckLoggedin(resolve, reject){
+            userService.loggedinCheck()
+                .then(loggedinCheckSuccessCb);
 
-        function loggedinCheckSuccessCb(response) {
-            //$rootScope.errorMessage = null;
-            //User is Authenticated
-            if (response.data !== '0') {
-                $rootScope.currentUser = response.data;
-                deferred.resolve();
-            } else { //User is not Authenticated
-                //$rootScope.errorMessage = 'You need to log in.';
-                Flash.create("danger", 'You need to log in.');
-                deferred.reject();
-                $location.url('/login');
+            function loggedinCheckSuccessCb(response) {
+                //$rootScope.errorMessage = null;
+                //User is Authenticated
+                if (response.data !== '0') {
+                    $rootScope.currentUser = response.data;
+                    resolve('You have logged in');
+                } else { //User is not Authenticated
+                    //$rootScope.errorMessage = 'You need to log in.';
+                    Flash.create("danger", 'You need to log in.');
+                    reject('You need to log in.');
+                    $location.url('/login');
+                }
             }
-        }
+        });
+
+        return newPromise;
     }
     
 })();

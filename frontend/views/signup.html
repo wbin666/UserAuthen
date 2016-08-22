@@ -1,6 +1,6 @@
 <h1>Sign Up</h1>
 
-<form name="signupForm" ng-submit="signupForm.$valid && signupVm.signup(signupVm.user)" novalidate ng-autodisable acdsubmitBtnId="signupSubmitBtnId">
+<form name="signupForm" ng-submit="signupForm.$valid && signupVm.signup(signupVm.user)" novalidate ng-autodisable acdSubmitBtnId="signupSubmitBtnId">
 	<div class="row form-group" ng-class="{ 'has-error': signupForm.username.$touched && signupForm.username.$invalid }">
 		<label class="col-md-2" style="text-align: right">User Name: </label>
 		<input class="col-md-2 help-block" ng-model="signupVm.user.username" name="username" ng-pattern="/^[a-zA-Z][a-zA-Z0-9-_\.]{3,20}$/" ng-model-options="{updateOn: 'blur'}" required acd-unique-check/>

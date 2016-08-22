@@ -2,6 +2,8 @@
  * Created by alex on 8/22/16.
  */
 (function () {
+    //Rule: Use UPPERCASE for Constants
+    
     var config = require('./config.defaults.js');
 
     //Notes: Most of development configurations have been set in 'config.defaults.js'

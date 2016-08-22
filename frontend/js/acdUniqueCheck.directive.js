@@ -30,8 +30,6 @@
                     return $q.when();
                 }
 
-                var def = $q.defer();
-
                 //Q: angularjs modelValue vs viewValue in ngModelController
                 //A: http://stackoverflow.com/questions/29498610/in-angularjs-how-value-propagate-from-real-view-value-viewvalue-model
                 //A: http://stackoverflow.com/questions/19383812/whats-the-difference-between-ngmodel-modelvalue-and-ngmodel-viewvalue
@@ -49,29 +47,7 @@
                 // BTW, I also refer to this blog for understanding the $parsers and $formatters.
                 //     https://www.nadeau.tv/using-ngmodelcontroller-with-custom-directives/
 
-                // //Using route in server side: /auth/uniquecheck/:fieldname/:fieldvalue
-                // $http.get('/auth/uniquecheck/username/' + modelValue)
-                //     .then(function sucessCb(response){
-                //         //the username has been registered
-                //         def.reject();
-                //     })
-                //     .catch(function errorCb(response){
-                //         //the username is legal/unique to use since it has not been registered
-                //         def.resolve();
-                //     });
-
-                userService.uniqueCheck(modelValue)
-                    .then(function sucessCb(response){
-                        console.log("Found existing value in user database for : " + modelValue);
-                        def.reject();
-                    })
-                    .catch(function errorCb(response){
-                        //the username is legal/unique to use since it has not been registered
-                        console.log("Not found the value in user database for : " + modelValue);
-                        def.resolve();
-                    });
-
-                return def.promise;
+                return userService.uniqueCheck(modelValue);  // return a promise
             }
         }
     }

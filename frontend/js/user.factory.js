@@ -15,8 +15,8 @@
     //4. connect-flash: http://stackoverflow.com/questions/25480633/how-do-i-display-flash-message-without-page-refresh-using-express-and-connect-fl
     //5. another solution:  put "index.html" in express engine, so get the support of "connect-flash".  other partial views are managed by angularjs
 
-    userService.$inject = ['$http', 'Flash'];
-    function userService($http, Flash) {
+    userService.$inject = ['$http', '$q', 'Flash'];
+    function userService($http, $q, Flash) {
         return {
             forgot: forgot,
             login: login,
@@ -28,12 +28,9 @@
         };
 
         function forgot(user){
-            var forgotPromise = $http.post("/forgot", user);
-
-            forgotPromise.then(forgotSuccessCb)
+            return $http.post("/forgot", user)
+                .then(forgotSuccessCb)
                 .catch(forgotErrorCb);
-            
-            return forgotPromise;
 
             function forgotSuccessCb(response){
                 console.log('An e-mail has been sent to ' + user.email + ' with further instructions.' + JSON.stringify(response));
@@ -46,17 +43,15 @@
         }
 
         function login(user){
-            console.log("user login info to be posted from Angular is " + JSON.stringify(user));
-            var loginPromise = $http.post('/login', user);
-            
-            loginPromise.then(loginSuccessCb)
+            return $http.post('/login', user)
+                .then(loginSuccessCb)
                 .catch(loginErrorCb);
-            
-            return loginPromise;
             
             function loginSuccessCb(response){
                 console.log("user login is successful : " + JSON.stringify(response));
                 Flash.create("success", "You've logged in successfully!");
+
+                return response;
             }
             function loginErrorCb(response){
                 console.log("user login error is : " + JSON.stringify(response));
@@ -69,17 +64,17 @@
         }
 
         function logout() {
-            console.log("the user is going to logout");
-            var logoutPromise = $http.post("/logout");
+            //console.log("the user is going to logout");
 
-            logoutPromise.then(logoutSuccessCb)
+            return $http.post("/logout")
+                .then(logoutSuccessCb)
                 .catch(logoutErrorCb);
-
-            return logoutPromise;
 
             function logoutSuccessCb(response) {
                 console.log("logout success : " + JSON.stringify(response));
                 Flash.create("success", "Log out successfully.");
+                
+                return response;
             }
 
             function logoutErrorCb(error) {
@@ -90,21 +85,23 @@
 
         function signup(user){
             console.log("user signup info to be posted from Anguluar is : " + JSON.stringify(user));
-            var signupPromise = $http.post('/signup', user);
 
-            signupPromise.then(signupSuccessCb)
+            return $http.post('/signup', user)
+                .then(signupSuccessCb)
                 .catch(signupErrorCb);
-
-            return signupPromise;
 
             function signupSuccessCb(response){
                 console.log("user signup is successful : " + JSON.stringify(response));
                 Flash.create("success", "User signup is completed successfully");
+                
+                return response;
             }
 
             function signupErrorCb(response){
                 console.log("user signup error is : " + JSON.stringify(response));
-                Flash.create("danger", "User signup error : " + response.data.error);
+                Flash.create("danger", "Please try again. User signup error : " + response.data.error);
+                
+                //return $q.reject(response);
             }
         }
         
@@ -152,8 +149,22 @@
             //                 or via ssl/https??
             //     more : http://stackoverflow.com/questions/1634271/url-encoding-the-space-character-or-20
 
-            //Using route in server side: /auth/uniquecheck/:fieldname/:fieldvalue
-            return $http.get('/auth/uniquecheck/' + fieldName + '/' + checkValue);
+            var newPromise = $q(function newPromiseCb(resolve, reject){
+                //Using route in server side: /auth/uniquecheck/:fieldname/:fieldvalue
+                $http.get('/auth/uniquecheck/' + fieldName + '/' + checkValue)
+                    .then(function sucessCb(response){
+                        console.log("Found existing value in user database for : " + checkValue);
+                        reject("Existing value found");
+                    })
+                    .catch(function errorCb(response){
+                        //the username is legal/unique to use since it has not been registered
+                        console.log("Not found the value in user database for : " + checkValue);
+                        resolve("It's qualified for a new user");
+                    });
+            });
+
+            return newPromise;
+
         }
     }
 })();

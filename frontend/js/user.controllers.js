@@ -16,11 +16,8 @@
 
         ////////////////////////////////////
         function logout(){
-            var logoutPromise = userService.logout();
-
-            logoutPromise.then(logoutComplete);
-
-            return logoutPromise;
+            return userService.logout()
+                .then(logoutComplete);
 
             function logoutComplete(response){
                 if(response.status === 200) {
@@ -41,10 +38,8 @@
 
         /////////////////////////////
         function signup(user){
-            var signupPromise = userService.signup(user);
-            signupPromise.then(signupComplete);
-
-            return signupPromise;
+            return userService.signup(user)
+                .then(signupComplete);
         }
 
         function signupComplete(response) {
@@ -63,10 +58,8 @@
         loginVm.login = login;
         /////////////////////////////////
         function login(user) {
-            var loginPromise = userService.login(user);
-            loginPromise.then(loginComplete);
-
-            return loginPromise;
+            return userService.login(user)
+                .then(loginComplete);
         }
 
         function loginComplete(response) {
@@ -105,12 +98,9 @@
         function resetPwd(user){
             user.resetToken = resetVm.params.token;
 
-            var resetPromise = userService.resetPwd(user);
-
-            resetPromise.then(resetPwdComplete)
+            return userService.resetPwd(user)
+                .then(resetPwdComplete)
                 .catch(resetPwdFailed);
-
-            return resetPromise;
         }
 
         function resetPwdComplete(response) {
