@@ -6,7 +6,7 @@
     
     var config = require('./config.defaults.js');
 
-    //Notes: Most of development configurations have been set in 'config.defaults.auth'
+    //Notes: Most of development configurations have been set in 'config.defaults.authClient'
     //    and not need to override them here.
     // config.env = 'development';
     // config.hostname = 'development.example';

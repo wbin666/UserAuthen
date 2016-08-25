@@ -77,7 +77,7 @@ app.provider('Flash', function () {
     var defaultConfig = {};
     var templatePresets = {
         bootstrap: {
-            html: '\n                <div role="alert" id="{{flash.auth.id}}"\n                    class="alert {{flash.auth.class}} alert-{{flash.type}} alert-dismissible alertIn alertOut">\n                    <div type="button" class="close" ng-show="flash.showClose" close-flash="{{flash.id}}">\n                        <span aria-hidden="true">&times;</span>\n                        <span class="sr-only">Close</span>\n                    </div>\n                    <span dynamic="flash.text"></span>\n                </div>',
+            html: '\n                <div role="alert" id="{{flash.authClient.id}}"\n                    class="alert {{flash.authClient.class}} alert-{{flash.type}} alert-dismissible alertIn alertOut">\n                    <div type="button" class="close" ng-show="flash.showClose" close-flash="{{flash.id}}">\n                        <span aria-hidden="true">&times;</span>\n                        <span class="sr-only">Close</span>\n                    </div>\n                    <span dynamic="flash.text"></span>\n                </div>',
             transclude: false
         },
         transclude: {
@@ -178,4 +178,4 @@ app.provider('Flash', function () {
         return dataFactory;
     }];
 });
-//# sourceMappingURL=angular-flash.auth.map
+//# sourceMappingURL=angular-flash.js.map

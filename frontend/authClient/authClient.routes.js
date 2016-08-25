@@ -11,28 +11,28 @@
                 templateUrl: 'home.html'
             })
             .when('/forgot',{
-                templateUrl: 'auth/forgot.html',
+                templateUrl: 'authClient/forgot.html',
                 controller: 'ForgotCtrl',
                 controllerAs: 'forgotVm'
             })
             .when('/login', {
-                templateUrl: 'auth/login.html',
+                templateUrl: 'authClient/login.html',
                 controller: 'LoginCtrl',
                 controllerAs: 'loginVm'
             })
             .when('/profile', {
-                templateUrl: 'auth/profile.html',
+                templateUrl: 'authClient/profile.html',
                 resolve: {
                     logincheck: checkLoggedin
                 }
             })
             .when('/reset/:token', {
-                templateUrl: 'auth/reset.html',
+                templateUrl: 'authClient/reset.html',
                 controller: 'ResetCtrl',
                 controllerAs: 'resetVm'
             })
             .when('/signup', {
-                templateUrl: 'auth/signup.html',
+                templateUrl: 'authClient/signup.html',
                 controller: 'SignUpCtrl',
                 controllerAs: 'signupVm'
             })

@@ -82,7 +82,7 @@
             function (user, done) {
                 // var smtpTransport = nodemailer.createTransport({
                 //     service: 'Hotmail',
-                //     auth: {
+                //     authClient: {
                 //         user: 'wbin_666@hotmail.com',
                 //         pass: 'twwb1228'
                 //     }

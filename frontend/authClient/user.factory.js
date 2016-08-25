@@ -140,7 +140,7 @@
             //C# sample: http://stackoverflow.com/questions/15978555/mvc4-url-routing-with-email-as-parameter/15978622
             //c# sample: http://stackoverflow.com/questions/5796789/passing-email-address-via-query-string-in-c-sharp#
 
-            //Using route in server side: /auth/uniquecheck/:fieldname/:fieldvalue
+            //Using route in server side: /authClient/uniquecheck/:fieldname/:fieldvalue
             // Todo: is it necessary to handle the "@" in email address? and avoid the plain text in url for security.  maybe by url encode or escape or SSL?
             // https://en.wikipedia.org/wiki/Percent-encoding
             //     http://stackoverflow.com/questions/15978555/mvc4-url-routing-with-email-as-parameter
@@ -150,8 +150,8 @@
             //     more : http://stackoverflow.com/questions/1634271/url-encoding-the-space-character-or-20
 
             var newPromise = $q(function newPromiseCb(resolve, reject){
-                //Using route in server side: /auth/uniquecheck/:fieldname/:fieldvalue
-                $http.get('/auth/uniquecheck/' + fieldName + '/' + checkValue)
+                //Using route in server side: /authClient/uniquecheck/:fieldname/:fieldvalue
+                $http.get('/authClient/uniquecheck/' + fieldName + '/' + checkValue)
                     .then(function sucessCb(response){
                         console.log("Found existing value in user database for : " + checkValue);
                         reject("Existing value found");

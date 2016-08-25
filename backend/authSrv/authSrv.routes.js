@@ -68,18 +68,18 @@
         app.post("/signup", signupHandlers.sigupPostHandler);
 
         // unique check for username and email
-        app.get("/auth/uniquecheck/:fieldname/:fieldvalue", uniqueCheckHandlers.uniqueCheckGetHandler);
+        app.get("/authClient/uniquecheck/:fieldname/:fieldvalue", uniqueCheckHandlers.uniqueCheckGetHandler);
         
         
         
-        // Facebook auth routes
-        // app.get('/auth/facebook', function authenticateFacebook (req, res, next) {
+        // Facebook authClient routes
+        // app.get('/authClient/facebook', function authenticateFacebook (req, res, next) {
         //   req.session.returnTo = '/#' + req.query.returnTo;
         //   next ();
         // },
         // passport.authenticate ('facebook'));
         //
-        // app.get('/auth/facebook/callback', function (req, res, next) {
+        // app.get('/authClient/facebook/callback', function (req, res, next) {
         //  var authenticator = passport.authenticate ('facebook', {
         //    successRedirect: req.session.returnTo,
         //    failureRedirect: '/'

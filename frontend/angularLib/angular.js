@@ -308,7 +308,7 @@ function isArrayLike(obj) {
  * providing 'undefined' or 'null' values for `obj` will not throw a TypeError, but rather just
  * return the value provided.
  *
-   ```auth
+   ```authClient
      var values = {name: 'misko', gender: 'male'};
      var log = [];
      angular.forEach(values, function(value, key) {
@@ -513,7 +513,7 @@ function inherit(parent, extra) {
  * @description
  * A function that performs no operations. This function can be useful when writing code in the
  * functional style.
-   ```auth
+   ```authClient
      function foo(callback) {
        var result = calculateResult();
        (callback || angular.noop)(result);
@@ -534,7 +534,7 @@ noop.$inject = [];
  * A function that returns its first argument. This function is useful when writing code in the
  * functional style.
  *
-   ```auth
+   ```authClient
      function transformer(transformationFn, value) {
        return (transformationFn || angular.identity)(value);
      };
@@ -1624,7 +1624,7 @@ function angularInit(element, bootstrap) {
  *   {{greeting}}
  * </div>
  *
- * <script src="angular.auth"></script>
+ * <script src="angular.authClient"></script>
  * <script>
  *   var app = angular.module('demo', [])
  *   .controller('WelcomeController', function($scope) {
@@ -1639,7 +1639,7 @@ function angularInit(element, bootstrap) {
  * @param {DOMElement} element DOM element which is the root of angular application.
  * @param {Array<String|Function|Array>=} modules an array of modules to load into the application.
  *     Each item in the array should be the name of a predefined module or a (DI annotated)
- *     function that will be invoked by the injector as a `auth` block.
+ *     function that will be invoked by the injector as a `authClient` block.
  *     See: {@link angular.module modules}
  * @param {Object=} config an object for defining configuration options for the application. The
  *     following keys are supported:
@@ -2138,7 +2138,7 @@ function setupModuleLoader(window) {
            * Defines an animation hook that can be later used with
            * {@link $animate $animate} service and directives that use this service.
            *
-           * ```auth
+           * ```authClient
            * module.animation('.animation-name', function($inject1, $inject2) {
            *   return {
            *     eventName : function(element, done) {
@@ -4913,7 +4913,7 @@ var $$CoreAnimateJsProvider = function() {
 };
 
 // this is prefixed with Core since it conflicts with
-// the animateQueueProvider defined in ngAnimate/animateQueue.auth
+// the animateQueueProvider defined in ngAnimate/animateQueue.authClient
 var $$CoreAnimateQueueProvider = function() {
   var postDigestQueue = new HashMap();
   var postDigestElements = [];
@@ -5049,7 +5049,7 @@ var $AnimateProvider = ['$provide', function($provide) {
    *
    *   Make sure to trigger the `doneFunction` once the animation is fully complete.
    *
-   * ```auth
+   * ```authClient
    *   return {
    *     //enter, leave, move signature
    *     eventFn : function(element, done, options) {
@@ -5150,7 +5150,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        *    has fired on the given element or among any of its children. Once the listener is fired, the provided callback
        *    is fired with the following params:
        *
-       * ```auth
+       * ```authClient
        * $animate.on('enter', container,
        *    function callback(element, phase) {
        *      // cool we detected an enter animation within the container
@@ -5177,7 +5177,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @description Deregisters an event listener based on the event which has been associated with the provided element. This method
        * can be used in three different ways depending on the arguments:
        *
-       * ```auth
+       * ```authClient
        * // remove all the animation event listeners listening for `enter`
        * $animate.off('enter');
        *
@@ -5221,7 +5221,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @description Used to get and set whether animations are enabled or not on the entire application or on an element and its children. This
        * function can be called in four ways:
        *
-       * ```auth
+       * ```authClient
        * // returns true or false
        * $animate.enabled();
        *
@@ -5414,7 +5414,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * If a JavaScript animation is detected then the provided styles will be given in as function parameters into the `animate`
        * method (or as part of the `options` parameter):
        *
-       * ```auth
+       * ```authClient
        * ngModule.animation('.my-inline-animation', function() {
        *   return {
        *     animate : function(element, from, to, done, options) {
@@ -11988,7 +11988,7 @@ var locationPrototype = {
    * [RFC 3986](http://www.ietf.org/rfc/rfc3986.txt).
    *
    *
-   * ```auth
+   * ```authClient
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var absUrl = $location.absUrl();
    * // => "http://example.com/#/some/path?foo=bar&baz=xoxo"
@@ -12010,7 +12010,7 @@ var locationPrototype = {
    * Change path, search and hash, when called with parameter and return `$location`.
    *
    *
-   * ```auth
+   * ```authClient
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var url = $location.url();
    * // => "/some/path?foo=bar&baz=xoxo"
@@ -12042,7 +12042,7 @@ var locationPrototype = {
    * Return protocol of current url.
    *
    *
-   * ```auth
+   * ```authClient
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var protocol = $location.protocol();
    * // => "http"
@@ -12064,7 +12064,7 @@ var locationPrototype = {
    * Note: compared to the non-angular version `location.host` which returns `hostname:port`, this returns the `hostname` portion only.
    *
    *
-   * ```auth
+   * ```authClient
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var host = $location.host();
    * // => "example.com"
@@ -12090,7 +12090,7 @@ var locationPrototype = {
    * Return port of current url.
    *
    *
-   * ```auth
+   * ```authClient
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var port = $location.port();
    * // => 80
@@ -12115,7 +12115,7 @@ var locationPrototype = {
    * if it is missing.
    *
    *
-   * ```auth
+   * ```authClient
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var path = $location.path();
    * // => "/some/path"
@@ -12141,7 +12141,7 @@ var locationPrototype = {
    * Change search part when called with parameter and return `$location`.
    *
    *
-   * ```auth
+   * ```authClient
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo
    * var searchObject = $location.search();
    * // => {foo: 'bar', baz: 'xoxo'}
@@ -12219,7 +12219,7 @@ var locationPrototype = {
    * Changes the hash fragment when called with a parameter and returns `$location`.
    *
    *
-   * ```auth
+   * ```authClient
    * // given url http://example.com/#/some/path?foo=bar&baz=xoxo#hashValue
    * var hash = $location.hash();
    * // => "hashValue"
@@ -15202,7 +15202,7 @@ function qFactory(nextTick, exceptionHandler) {
    * current promise, you have to "rethrow" the error by returning a rejection constructed via
    * `reject`.
    *
-   * ```auth
+   * ```authClient
    *   promiseB = promiseA.then(function(result) {
    *     // success: do something and resolve promiseB
    *     //          with the old or a new result
@@ -15538,7 +15538,7 @@ function $RootScopeProvider() {
      *
      * # Inheritance
      * A scope can inherit from a parent scope, as in this example:
-     * ```auth
+     * ```authClient
          var parent = $rootScope;
          var child = parent.$new();
 
@@ -15710,7 +15710,7 @@ function $RootScopeProvider() {
        *
        *
        * # Example
-       * ```auth
+       * ```authClient
            // let's assume that scope was dependency injected as the $rootScope
            var scope = $rootScope;
            scope.name = 'misko';
@@ -15922,7 +15922,7 @@ function $RootScopeProvider() {
        *
        *
        * # Example
-       * ```auth
+       * ```authClient
           $scope.names = ['igor', 'matias', 'misko', 'james'];
           $scope.dataCount = 4;
 
@@ -16118,7 +16118,7 @@ function $RootScopeProvider() {
        * In unit tests, you may need to call `$digest()` to simulate the scope life cycle.
        *
        * # Example
-       * ```auth
+       * ```authClient
            var scope = ...;
            scope.name = 'misko';
            scope.counter = 0;
@@ -16338,7 +16338,7 @@ function $RootScopeProvider() {
        * expressions.
        *
        * # Example
-       * ```auth
+       * ```authClient
            var scope = ng.$rootScope.Scope();
            scope.a = 1;
            scope.b = 2;
@@ -16422,7 +16422,7 @@ function $RootScopeProvider() {
        * ## Life cycle
        *
        * # Pseudo-Code of `$apply()`
-       * ```auth
+       * ```authClient
            function $apply(expr) {
              try {
                return $eval(expr);
@@ -17136,7 +17136,7 @@ function $SceDelegateProvider() {
      * See {@link ng.$sce $sce} for enabling strict contextual escaping.
      *
      * @param {string} type The kind of context in which this value is safe for use.  e.g. url,
-     *   resourceUrl, html, auth and css.
+     *   resourceUrl, html, authClient and css.
      * @param {*} value The value that that should be considered trusted/safe.
      * @returns {*} A value that can be used to stand in for the provided `value` in places
      * where Angular expects a $sce.trustAs() return value.
@@ -17580,7 +17580,7 @@ function $SceProvider() {
    *
    * Inheritance happens to capture this in a natural way.  In some future, we
    * may not use inheritance anymore.  That is OK because no code outside of
-   * sce.auth and sceSpecs.auth would need to be aware of this detail.
+   * sce.authClient and sceSpecs.authClient would need to be aware of this detail.
    */
 
   this.$get = ['$parse', '$sceDelegate', function(
@@ -17602,7 +17602,7 @@ function $SceProvider() {
      * @kind function
      *
      * @return {Boolean} true if SCE is enabled, false otherwise.  If you want to set the value, you
-     * have to do it at module auth time on {@link ng.$sceProvider $sceProvider}.
+     * have to do it at module authClient time on {@link ng.$sceProvider $sceProvider}.
      *
      * @description
      * Returns a boolean indicating if SCE is enabled.

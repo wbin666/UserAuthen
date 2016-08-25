@@ -105,7 +105,7 @@
         // // Facebook strategy
         // passport.use(new FacebookStrategy({
         //
-        //    // pull in our app id and secret from our authRoute.auth file
+        //    // pull in our app id and secret from our authRoute.authClient file
         //    clientID        : configAuth.facebookAuth.clientID,
         //    clientSecret    : configAuth.facebookAuth.clientSecret,
         //    callbackURL     : configAuth.facebookAuth.callbackURL

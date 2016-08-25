@@ -10,7 +10,7 @@
 
     //Passport
     var passport = require('passport');
-    require('./backend/auth/passport')(passport); // pass passport for configuration
+    require('./backend/authSrv/passport')(passport); // pass passport for configuration
 
     app.use(require('morgan')('combined'));
     app.use(express.static(__dirname + '/frontend'));
@@ -40,11 +40,11 @@
     }));
 
     //Load .env file
-    //var dotenv = require('dotenv').auth({path: './sample.env'});
+    //var dotenv = require('dotenv').authClient({path: './sample.env'});
     //dotenv.load({path: './sample.env'});
 
     // routes ======================================================================
-    require('./backend/auth/authSrv.routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+    require('./backend/authSrv/authSrv.routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
     console.log("__dirname is " + __dirname);
     app.all('/*', function(req, res) {
