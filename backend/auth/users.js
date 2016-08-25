@@ -8,7 +8,7 @@
     var moment = require('moment');
     var ObjectId = require('mongodb').ObjectId;
     var cfg = require('../../config');
-    var myMongo=require('./../models/dbConnect.js');
+    var myMongo=require('../dbConnect.js');
     var logger = require('../../util/logger.js');
 
     //const saltRounds = 10;

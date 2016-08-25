@@ -4,9 +4,9 @@
 (function() {
     'use strict';
 
-    var cfg = require('../../config');
+    var cfg = require('../config/index');
     var MongoClient = require('mongodb').MongoClient;
-    var logger = require('../../util/logger.js');
+    var logger = require('../util/logger.js');
     //var url = "mongodb://127.0.0.1:27017/timeExchange";
     //var myDB;
 

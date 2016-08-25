@@ -5,7 +5,7 @@
     var express = require('express');
     var app = express();
     var port = process.env.PORT || 3000;
-    var myMongo = require('./backend/models/dbConnect.js');
+    var myMongo = require('./backend/dbConnect.js');
     var logger=require('./util/logger.js');
 
     //Passport
