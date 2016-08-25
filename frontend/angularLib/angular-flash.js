@@ -174,7 +174,7 @@ app.provider('Flash', function () {
                 return flash.id;
             }).indexOf(id);
         }
-
+        
         return dataFactory;
     }];
 });
