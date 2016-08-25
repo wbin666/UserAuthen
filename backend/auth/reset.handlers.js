@@ -6,9 +6,9 @@
 
     var nodemailer = require('nodemailer');
     var async = require('async');
-    var mailService = require('../../../util/mailService.js');
-    var Users = require('.././users.js');
-    var logger = require("../../../util/logger.js");
+    var mailService = require('../../util/mailService.js');
+    var Users = require('./users.dataservice.js');
+    var logger = require("../../util/logger.js");
 
     //redirect to /forgot with a tip about invalid/expired url.
     var forgotRedirectUrl = '/forgot' + '?initAgainInfo=' + 'Please request password reset again since password reset url is invalid or has expired';

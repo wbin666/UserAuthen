@@ -31,7 +31,7 @@
     //             if(err){
     //                 logger.error({err: err}, "failed to connect to database");
     //
-    //                 throw err;   //??? how to handle this or where to handle this.  leverage "process.on('uncaughtException', fn(err) {...} ) " in app.js ??
+    //                 throw err;   //??? how to handle this or where to handle this.  leverage "process.on('uncaughtException', fn(err) {...} ) " in app.auth ??
     //
     //             }
     //             myDB = db;

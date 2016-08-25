@@ -1,10 +1,10 @@
 (function() {
     'use strict';
 
-    var forgotHandlers = require('./handlers/forgot.handlers.js');
-    var signupHandlers = require('./handlers/signup.handlers.js');
-    var uniqueCheckHandlers = require('./handlers/uniquecheck.handlers.js');
-    var resetHandlers = require('./handlers/reset.handlers.js');
+    var forgotHandlers = require('./forgot.handlers.js');
+    var signupHandlers = require('./signup.handlers.js');
+    var uniqueCheckHandlers = require('./uniquecheck.handlers.js');
+    var resetHandlers = require('./reset.handlers.js');
     var logger = require("../../util/logger.js");
 
     module.exports = function (app, passport) {

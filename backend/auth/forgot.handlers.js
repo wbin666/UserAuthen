@@ -7,9 +7,9 @@
     var nodemailer = require('nodemailer');
     var async = require('async');
     var crypto = require('crypto');
-    var Users = require('.././users.js');
-    var mailService = require('../../../util/mailService.js');
-    var logger = require("../../../util/logger.js");
+    var Users = require('./users.dataservice.js');
+    var mailService = require('../../util/mailService.js');
+    var logger = require("../../util/logger.js");
 
     module.exports.forgotPostHandler = forgotPostHandler;
 
@@ -80,7 +80,7 @@
                 // var mailOptions = {
                 //     to: user.email,
                 //     from: 'wbin_666@hotmail.com',
-                //     subject: 'Node.js Password Reset',
+                //     subject: 'Node.auth Password Reset',
                 //     text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                 //     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
                 //     'http://' + req.headers.host + '/initreset/' + token + '\n\n' +

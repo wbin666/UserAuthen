@@ -5,7 +5,7 @@
     //Rule: Use UPPERCASE for Constants
     
     var config = module.exports = {};
-    //console.log('-----reading the config.defaults.js under config!');
+    //console.log('-----reading the config.defaults.auth under config!');
 
     config.env = 'development';
     //config.hostname = 'dev.example.com';

@@ -9,7 +9,7 @@
     //var FacebookStrategy = require('passport-facebook').Strategy;
     //var configAuth       = require('./oauth');
 
-    var Users = require('./users.js');
+    var Users = require('./users.dataservice.js');
 
     // expose this function to our app using module.exports
     module.exports = function (passport) {
@@ -105,7 +105,7 @@
         // // Facebook strategy
         // passport.use(new FacebookStrategy({
         //
-        //    // pull in our app id and secret from our authRoute.js file
+        //    // pull in our app id and secret from our authRoute.auth file
         //    clientID        : configAuth.facebookAuth.clientID,
         //    clientSecret    : configAuth.facebookAuth.clientSecret,
         //    callbackURL     : configAuth.facebookAuth.callbackURL

@@ -44,7 +44,7 @@
     //dotenv.load({path: './sample.env'});
 
     // routes ======================================================================
-    require('./backend/auth/authRoute.js')(app, passport); // load our routes and pass in our app and fully configured passport
+    require('./backend/auth/authSrv.routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
     console.log("__dirname is " + __dirname);
     app.all('/*', function(req, res) {

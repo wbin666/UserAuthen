@@ -178,4 +178,4 @@ app.provider('Flash', function () {
         return dataFactory;
     }];
 });
-//# sourceMappingURL=angular-flash.js.map
+//# sourceMappingURL=angular-flash.auth.map

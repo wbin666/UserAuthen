@@ -4,8 +4,8 @@
 (function(){
     'use strict';
 
-    var Users = require('.././users.js');
-    var logger = require("../../../util/logger.js");
+    var Users = require('./users.dataservice.js');
+    var logger = require("../../util/logger.js");
 
     module.exports.sigupPostHandler = sigupPostHandler;
 

@@ -8,31 +8,31 @@
     function angularLoginRouteProvider($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '/views/home.html'
+                templateUrl: 'home.html'
             })
             .when('/forgot',{
-                templateUrl: '/views/forgot.html',
+                templateUrl: 'auth/forgot.html',
                 controller: 'ForgotCtrl',
                 controllerAs: 'forgotVm'
             })
             .when('/login', {
-                templateUrl: '/views/login.html',
+                templateUrl: 'auth/login.html',
                 controller: 'LoginCtrl',
                 controllerAs: 'loginVm'
             })
             .when('/profile', {
-                templateUrl: '/views/profile.html',
+                templateUrl: 'auth/profile.html',
                 resolve: {
                     logincheck: checkLoggedin
                 }
             })
             .when('/reset/:token', {
-                templateUrl: '/views/reset.html',
+                templateUrl: 'auth/reset.html',
                 controller: 'ResetCtrl',
                 controllerAs: 'resetVm'
             })
             .when('/signup', {
-                templateUrl: '/views/signup.html',
+                templateUrl: 'auth/signup.html',
                 controller: 'SignUpCtrl',
                 controllerAs: 'signupVm'
             })
